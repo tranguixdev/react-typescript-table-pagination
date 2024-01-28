@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Pagination from "./components/Table/TableFooter/Pagination";
+import "./App.css";
+import countriesData from "./data/countries";
+import Table from "./components/Table";
 
-function App() {
+export default function App() {
+  const lastPage = 20;
+  const [countries] = useState([...countriesData]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>React TypeScript Pagination</h1>
+      <Table data={countries} rowsPerPage={4} />
+      {/* <Pagination
+        currentPage={currentPage}
+        lastPage={lastPage}
+        maxLength={7}
+        setCurrentPage={setCurrentPage}
+      /> */}
     </div>
   );
 }
-
-export default App;
